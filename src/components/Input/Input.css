@@ -1,0 +1,16 @@
+.input {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/*.input input {*/
+/*    width: 500px;*/
+/*    height: 30px;*/
+/*    font-size: 25px;*/
+/*}*/
+
+.input label {
+    margin-bottom: 10px;
+    font-size: 20px;
+    display: block;
+}

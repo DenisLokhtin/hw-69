@@ -1,0 +1,8 @@
+.card {
+    margin-top: 50px;
+}
+
+.card div {
+    display: inline-block;
+    margin-right: 20px;
+}
