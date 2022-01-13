@@ -1,22 +1,47 @@
 import React from 'react';
 import './MovieCard.css'
+import {useSelector} from "react-redux";
 
-const MovieCard = (props) => (
-    <div className="container">
-        <div className="container-inner">
-            <div className="card">
+const MovieCard = (props) => {
+    const film = useSelector(state => state.film);
+
+    const image = (data) => {
+        if (data) {
+            return (
                 <div>
-                    <img src="" alt="img"/>
+                    <img src={data.medium} alt="img"/>
                 </div>
-                <div>
-                    <h3>Movie</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, quia?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, repellat.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, veniam.</p>
+            )
+        }
+    };
+
+    const printFilms = () => {
+        return film.map(film => {
+            return (
+                <div key={film.show.name} className="card">
+                    {image(film.show.image)}
+                    <div className="text">
+                        <h3>{film.show.name}</h3>
+                        <div dangerouslySetInnerHTML={{__html: film.show.summary}}/>
+                        <p>Language: {film.show.language}</p>
+                        <p>Runtime: {film.show.averageRuntime}</p>
+                        <p>Status: {film.show.status}</p>
+                        <p>Premiered: {film.show.premiered}</p>
+                        <p>Ended: {film.show.ended}</p>
+                        <p>Rating: {film.show.rating.average}</p>
+                    </div>
                 </div>
+            )
+        });
+    };
+
+    return (
+        <div className="container">
+            <div className="container-inner">
+                {printFilms()}
             </div>
         </div>
-    </div>
-);
+    )
+};
 
 export default MovieCard;
